@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Amaran Ransomware</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #eee;
+      font-family: 'Consolas', monospace;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .header {
+      color: #ff4040;
+      font-size: 2em;
+      margin-bottom: 20px;
+      text-shadow: 0 0 5px #ff4040;
+      animation: blink 1s linear infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .content {
+      width: 80%;
+      max-width: 600px;
+      padding: 20px;
+      border: 1px solid #333;
+      text-align: left;
+    }
+
+    .important {
+      color: #ff4040;
+      font-weight: bold;
+    }
+
+    .command {
+      background-color: #222;
+      color: #ddd;
+      padding: 5px;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 0.8em;
+      color: #888;
+    }
+
+    .disclaimer {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      font-size: 0.7em;
+      color: #555;
+    }
+
+    #loginForm {
+      display: block;
+    }
+
+    #ransomwareContent {
+      display: none;
+    }
+
+    #deletionWarning {
+      display: none;
+      color: #ff4040;
+      font-size: 1.2em;
+      margin-top: 20px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      margin: 5px 0;
+      padding: 8px;
+      background-color: #222;
+      color: #ddd;
+      border: 1px solid #333;
+      border-radius: 3px;
+    }
+
+    button {
+      background-color: #ff4040;
+      color: #eee;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <div id="loginForm">
+      <div class="header">
+        Log Masuk Diperlukan
+      </div>
+      <input type="text" id="username" placeholder="Nama Pengguna"><br>
+      <input type="password" id="password" placeholder="Kata Laluan"><br>
+      <button onclick="checkLogin()">Log Masuk</button>
+      <div id="deletionWarning">
+        Awas! Fail dan data anda akan dipadam dalam <span id="timer">10</span> saat!
+      </div>
+    </div>
+
+    <div id="ransomwareContent">
+      <div class="header">
+        !! AMARAN SISTEM KRITIKAL !!
+      </div>
+      <div class="content">
+        <p>Fail anda telah disulitkan dengan kunci yang kuat.</p>
+        <p>Untuk mendapatkan semula fail anda, anda perlu menghantar <span class="important">0.5 BTC</span> ke alamat berikut:</p>
+        <p class="important"><span class="command">bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh</span></p>
+        <p>Selepas pembayaran, hantar tangkapan skrin ke <a href="https://t.me/cpzkyy">t.me/cpzkyy</a> untuk menerima kunci penyahsulitan anda.</p>
+        <p>Kegagalan untuk mematuhi dalam <span class="important">24 jam</span> akan mengakibatkan kehilangan data kekal.</p>
+      </div>
+      <div class="footer">
+        Ransomware v3.0 - Hak cipta terpelihara.
+      </div>
+    </div>
+  </div>
+  <div class="disclaimer">
+    Ini adalah gurauan. Fail anda selamat.
+  </div>
+
+  <script>
+    function checkLogin() {
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+
+      if (username === "acap" && password === "acap") {
+        document.getElementById("loginForm").style.display = "none";
+        document.getElementById("ransomwareContent").style.display = "block";
+      } else {
+        document.getElementById("deletionWarning").style.display = "block";
+        var timeLeft = 10;
+        var timerInterval = setInterval(function() {
+          timeLeft--;
+          document.getElementById("timer").textContent = timeLeft;
+          if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            alert("Semua fail dan data anda telah dipadam!");
+            // Di sini Anda dapat menambahkan kode untuk mengarahkan pengguna ke halaman lain atau melakukan tindakan lain.
+          }
+        }, 1000);
+      }
+    }
+  </script>
+</body>
+  </html>
+  
